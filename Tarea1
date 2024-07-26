@@ -1,0 +1,56 @@
+interface Trabajador {
+    void realizarJornada();
+}
+
+
+abstract class TrabajadorBase implements Trabajador {
+   
+    public void checarEntrada() { 
+        System.out.println(getClass().getSimpleName() + " ha checado su entrada."); 
+    }
+    
+  
+    public void trabajar() { 
+        System.out.println(getClass().getSimpleName() + " está trabajando."); 
+    }
+    
+    public void horaDeComida() { 
+        System.out.println(getClass().getSimpleName() + " está en su hora de comida."); 
+    }
+    
+    public void cobrar() { 
+        System.out.println(getClass().getSimpleName() + " está cobrando."); 
+    }
+    
+    public void checarSalida() { 
+        System.out.println(getClass().getSimpleName() + " ha checado su salida."); 
+    }
+    
+    public void realizarJornada() {
+        checarEntrada();
+        trabajar();
+        horaDeComida();
+        trabajar();
+        cobrar();
+        checarSalida();
+    }
+}
+
+class Panadero extends TrabajadorBase {}
+class Soldado extends TrabajadorBase {}
+class Constructor extends TrabajadorBase {}
+class Jardinero extends TrabajadorBase {}
+class Comerciante extends TrabajadorBase {}
+
+public class Empresa {
+    public static void main(String[] args) {
+        // Creación de instancias de cada trabajador
+        Trabajador[] trabajadores = { new Panadero(), new Soldado(), new Constructor(), new Jardinero(), new Comerciante() };
+
+        // Ejecución de la jornada laboral para cada trabajador
+        for (Trabajador trabajador : trabajadores) {
+            trabajador.realizarJornada();
+            System.out.println();
+        }
+    }
+}
